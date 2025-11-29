@@ -1,59 +1,71 @@
-# phdev13 - Portfolio Website
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-A modern, interactive portfolio website built with React, TypeScript, Vite, and Tailwind CSS. Features smooth animations, a chatbot, and a showcase of projects.
+# Run and deploy your AI Studio app
 
-## 🚀 Tech Stack
+This contains everything you need to run your app locally and deploy to Render.com.
 
-- **React 19** - UI library
-- **TypeScript** - Type-safe development
-- **Vite** - Fast build tool
-- **Tailwind CSS** - Utility-first CSS
-- **Framer Motion** - Animations
-- **Lucide React** - Icons
+View your app in AI Studio: https://ai.studio/apps/drive/1jst3cjx3xunJavctRmHHgwFs1qfDfADZ
 
-## 📦 Installation
+## Run Locally
 
-**Prerequisites:** Node.js (v16 or higher)
+**Prerequisites:** Node.js 18+
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/phdev13/phdev13site.git
-   cd phdev13site
-   ```
-
-2. Install dependencies:
+1. Install dependencies:
    ```bash
    npm install
    ```
+2. Copy `.env.example` to `.env.local` and set your Gemini API key:
+   ```bash
+   cp .env.example .env.local
+   ```
+   Then edit `.env.local` and add your `GEMINI_API_KEY`
 
-3. Run the development server:
+3. Run the app:
    ```bash
    npm run dev
    ```
 
-4. Build for production:
+## Deploy to Render.com
+
+### Prerequisites:
+- GitHub account with this repository
+- Render.com account (https://render.com)
+- Gemini API key
+
+### Steps:
+
+1. **Push to GitHub:**
    ```bash
-   npm run build
+   git add .
+   git commit -m "Prepare for Render deployment"
+   git push origin main
    ```
 
-## 📁 Project Structure
+2. **Connect to Render:**
+   - Go to [Render Dashboard](https://dashboard.render.com)
+   - Click "New +" → "Web Service"
+   - Connect your GitHub repository `phstatic1/phstatic2`
+   - Choose the `main` branch
 
-- `components/` - React components (Header, Hero, About, Services, Portfolio, Contact, etc.)
-- `App.tsx` - Main application component
-- `index.tsx` - Entry point
-- `types.ts` - TypeScript type definitions
-- `vite.config.ts` - Vite configuration
+3. **Configure Environment:**
+   - Runtime: Node
+   - Build Command: `npm install && npm run build`
+   - Start Command: `npm start`
+   - Environment Variables:
+     - Add `GEMINI_API_KEY` with your actual API key
 
-## 🎨 Features
+4. **Deploy:**
+   - Click "Create Web Service"
+   - Render will automatically build and deploy your app
 
-- Responsive design
-- Dark mode support
-- Interactive animations
-- Chatbot integration
-- Project showcase
-- Contact form
-- Smooth scrolling
+Your app will be available at `https://<your-service-name>.onrender.com`
 
-## 📄 License
+## Files for Deployment
 
-MIT
+- `render.yaml` - Render deployment configuration
+- `server.js` - Express server for production
+- `.env.example` - Example environment variables
+- `package.json` - Updated with start script and express dependency
+
